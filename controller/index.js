@@ -8,7 +8,7 @@ const naitaMatkad = (req, res) => {
 }
 
 
-const naitaMatka = (req, res) => {
+/* const naitaMatka = (req, res) => {
     const matkad = loeMatkadeAndmed()
     const matkaIndeks = req.params.id
     const matk = matkad[matkaIndeks]
@@ -24,6 +24,13 @@ const naitaMatka = (req, res) => {
             </body>
         </html>
         `)
+} */
+
+const naitaMatka = (req, res) => {
+    const matkad = loeMatkadeAndmed()
+    const matkaIndeks = req.params.id
+    const matk = matkad[matkaIndeks]
+    res.render("pages/matk", {matk: matk})
 }
 
 const registreeriOsaleja = (req, res) => {
@@ -34,12 +41,20 @@ const registreeriOsaleja = (req, res) => {
 const naitaUudised = (req, res) => {
     const uudised = loeUudisedAndmed()
     console.log(uudised)
-    res.render("uudised", {uudised: uudised})
+    res.render("pages/uudised", {uudised: uudised})
+}
+
+const naitaUudis = (req, res) => {
+    const uudised = loeUudisedAndmed()
+    const uudisIndeks = req.params.id
+    const uudis = uudised[uudisIndeks]
+    res.render("pages/uudis", {uudis: uudis})
 }
 
 module.exports = {
     naitaMatkad,
     naitaMatka,
     registreeriOsaleja,
-    naitaUudised
+    naitaUudised,
+    naitaUudis
 }

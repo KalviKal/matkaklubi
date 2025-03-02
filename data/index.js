@@ -51,37 +51,37 @@ const matk1 = {
  const uudised = [
    {
        pealkiri: "Uus Mägimatk Otepääl",
-       uudisepiltUrl: "/assets/media/hiking1.png",
+       uudisepiltUrl: "/assets/hiking1.png",
        kokkuvote: "Lähme ja oleme kolm päeva mägedes",
        infolink: "/assets/test.html"
    },
    {
       pealkiri: "Orienteerumine Pirital",
-      uudisepiltUrl: "/assets/media/hiking2.png",
+      uudisepiltUrl: "/assets/hiking2.png",
       kokkuvote: "Lähme ja oleme kolm päeva mägedes",
       infolink: "/assets/test.html"
   },
   {
       pealkiri: "Rännak Paldiskis",
-      uudisepiltUrl: "/assets/media/hiking3.png",
+      uudisepiltUrl: "/assets/hiking3.png",
       kokkuvote: "Lähme ja oleme kolm päeva mägedes",
       infolink: "/assets/test.html"
    },
    {
       pealkiri: "Rännak Aegviidus",
-      uudisepiltUrl: "/assets/media/hiking3.png",
+      uudisepiltUrl: "/assets/hiking3.png",
       kokkuvote: "Lähme ja oleme kolm päeva mägedes",
       infolink: "/assets/test.html"
    },
    {
       pealkiri: "Matk ümber Nelijärve",
-      uudisepiltUrl: "/assets/media/hiking2.png",
+      uudisepiltUrl: "/assets/hiking2.png",
       kokkuvote: "Lähme ja oleme kolm päeva mägedes",
       infolink: "/assets/test.html"
    },
    {
       pealkiri: "Matk Pranglil",
-      uudisepiltUrl: "/assets/media/hiking1.png",
+      uudisepiltUrl: "/assets/hiking1.png",
       kokkuvote: "Lähme ja oleme kolm päeva mägedes",
       infolink: "/assets/test.html"
    }
