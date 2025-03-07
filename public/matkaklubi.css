@@ -223,3 +223,8 @@ body {
 .table-column:nth-child(3n) {
     border-right: 0;
 }
+
+
+.matkapilt {
+    width: 100%;
+}

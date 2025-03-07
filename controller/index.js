@@ -1,5 +1,5 @@
 
-const {loeMatkadeAndmed, lisaOsaleja, loeUudisedAndmed} = require("../data")
+const {loeMatkadeAndmed, lisaOsaleja, loeUudisedAndmed, lisaSonum, loeSonumid} = require("../data")
 
 const naitaMatkad = (req, res) => {
     const matkad = loeMatkadeAndmed()
@@ -33,6 +33,11 @@ const naitaMatka = (req, res) => {
     res.render("pages/matk", {matk: matk})
 }
 
+const naitaKontakt = (req, res) => {
+    res.render("pages/kontakt")
+}
+
+
 const registreeriOsaleja = (req, res) => {
     lisaOsaleja(req.query.matk, req.query.email)
     res.redirect("/matkad")
@@ -51,10 +56,25 @@ const naitaUudis = (req, res) => {
     res.render("pages/uudis", {uudis: uudis})
 }
 
+const tootleSonum = (req, res) => {
+    console.log(req.body)
+    lisaSonum({nimi: req.body.nimi, sonum: req.body.markus})
+    console.log(loeSonumid())
+    //res.send(
+    //    `
+    //    <h2>Sõnum on edukalt edastatud! </h2>
+    //    `
+    //)
+    const sonumid = loeSonumid()
+    res.render("pages/sonumid", {sonumid: sonumid})
+}
+
 module.exports = {
     naitaMatkad,
     naitaMatka,
     registreeriOsaleja,
     naitaUudised,
-    naitaUudis
+    naitaUudis,
+    naitaKontakt,
+    tootleSonum
 }

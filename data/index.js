@@ -92,8 +92,21 @@ function loeUudisedAndmed(){
 }
 
 
+const sonumid = []
+
+
+function lisaSonum({nimi, sonum}){
+   sonumid.push({nimi, sonum})
+}
+
+function loeSonumid(){
+   return sonumid
+}
+
  module.exports = {
     loeMatkadeAndmed,
     lisaOsaleja,
-    loeUudisedAndmed
+    loeUudisedAndmed,
+    lisaSonum,
+    loeSonumid
  }
