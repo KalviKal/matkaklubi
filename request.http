@@ -1,0 +1,30 @@
+### Kõigi sõnumite lugemine
+GET http://localhost:3030/api/sonumid HTTP/1.1
+
+### Sõnumi saatmine
+POST http://localhost:3030/api/sonumid HTTP/1.1
+Content-Type: application/json
+
+{
+    "nimi": "Kalle",
+    "sonum": "Veel üks sõnum"
+}
+
+
+### Kõigi matkade lugemine
+GET http://localhost:3030/api/matkad HTTP/1.1
+
+### Matka lisamine
+POST http://localhost:3030/api/matkad HTTP/1.1
+Content-Type: application/json
+
+{
+    "nimetus": "Matk Kilingi-Nõmmel",
+    "pildiUrl": "/assets/Hiker.png",
+    "kirjeldus": "20km puhast elamust.",
+    "osalejad": ["malle@mail.ee", "toomas@hot.ee"]
+}
+
+
+### Kõigi uudiste lugemine
+GET http://localhost:3030/api/uudised HTTP/1.1

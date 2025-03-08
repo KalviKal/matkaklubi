@@ -30,6 +30,10 @@ const matk1 = {
     return matkad
  }
 
+ function lisaMatkData({nimetus, pildiUrl, kirjeldus, osalejad}){
+   matkad.push({nimetus, pildiUrl, kirjeldus, osalejad})
+ }
+
 
  function lisaOsaleja(matkaIndeks, osalejaEmail){
     const matk = matkad[matkaIndeks]
@@ -52,38 +56,32 @@ const matk1 = {
    {
        pealkiri: "Uus Mägimatk Otepääl",
        uudisepiltUrl: "/assets/hiking1.png",
-       kokkuvote: "Lähme ja oleme kolm päeva mägedes",
-       infolink: "/assets/test.html"
+       kokkuvote: "Lähme ja oleme kolm päeva mägedes"
    },
    {
       pealkiri: "Orienteerumine Pirital",
       uudisepiltUrl: "/assets/hiking2.png",
-      kokkuvote: "Lähme ja oleme kolm päeva mägedes",
-      infolink: "/assets/test.html"
+      kokkuvote: "Lähme ja oleme kolm päeva mägedes"
   },
   {
       pealkiri: "Rännak Paldiskis",
       uudisepiltUrl: "/assets/hiking3.png",
-      kokkuvote: "Lähme ja oleme kolm päeva mägedes",
-      infolink: "/assets/test.html"
+      kokkuvote: "Lähme ja oleme kolm päeva mägedes"
    },
    {
       pealkiri: "Rännak Aegviidus",
       uudisepiltUrl: "/assets/hiking3.png",
-      kokkuvote: "Lähme ja oleme kolm päeva mägedes",
-      infolink: "/assets/test.html"
+      kokkuvote: "Lähme ja oleme kolm päeva mägedes"
    },
    {
       pealkiri: "Matk ümber Nelijärve",
       uudisepiltUrl: "/assets/hiking2.png",
-      kokkuvote: "Lähme ja oleme kolm päeva mägedes",
-      infolink: "/assets/test.html"
+      kokkuvote: "Lähme ja oleme kolm päeva mägedes"
    },
    {
       pealkiri: "Matk Pranglil",
       uudisepiltUrl: "/assets/hiking1.png",
-      kokkuvote: "Lähme ja oleme kolm päeva mägedes",
-      infolink: "/assets/test.html"
+      kokkuvote: "Lähme ja oleme kolm päeva mägedes"
    }
 ]
 
@@ -105,6 +103,7 @@ function loeSonumid(){
 
  module.exports = {
     loeMatkadeAndmed,
+    lisaMatkData,
     lisaOsaleja,
     loeUudisedAndmed,
     lisaSonum,
