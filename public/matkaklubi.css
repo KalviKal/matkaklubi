@@ -228,3 +228,12 @@ body {
 .matkapilt {
     width: 100%;
 }
+
+
+.vasak-paan-valik {
+    cursor : pointer;
+}
+
+.vasak-paan-valik:hover {
+    background-color:lightgray;
+}

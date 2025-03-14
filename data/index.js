@@ -1,3 +1,15 @@
+// MongoDB
+const {MongoClient} = require("mongodb")
+const andmebaas = "matka-app-2111"
+const salasona = "zmar6.6RGDNgx"
+//const mongoUrl = `mongodb+srv://matka-app:${salasona}@cluster0.vpkdv.mongodb.net/${andmebaas}?retryWrites=true&w=majority`
+const mongoUrl = `mongodb+srv://matkaapp:${salasona}@cluster0.7caxa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+const client = new MongoClient(mongoUrl);
+
+
+
+
+
 const matk1 = {
     nimetus: "Sügismatk Kõrvemaal",
     pildiUrl: "/assets/Hills.png",
@@ -33,6 +45,21 @@ const matk1 = {
  function lisaMatkData({nimetus, pildiUrl, kirjeldus, osalejad}){
    matkad.push({nimetus, pildiUrl, kirjeldus, osalejad})
  }
+
+// MongoDB jaoks
+async function lisaMatkData(matk){
+
+   try {
+      await client.connect();
+      const database = client.db(andmebaas);
+      const matkad = database.collection("matkad");
+      const result = await matkad.insertOne(matk)
+      console.log(`A document was inserted with the _id: ${result.insertedId}`)
+    } finally {
+      await client.close();
+    }
+   
+}
 
 
  function lisaOsaleja(matkaIndeks, osalejaEmail){

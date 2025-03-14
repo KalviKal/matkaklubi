@@ -1,5 +1,5 @@
 
-const {loeMatkadeAndmed, lisaOsaleja, loeUudisedAndmed, lisaSonum, loeSonumid} = require("../data")
+const {loeMatkadeAndmed, lisaOsaleja, loeUudisedAndmed, lisaSonum, loeSonumid, lisaMatkData} = require("../data")
 
 const naitaMatkad = (req, res) => {
     const matkad = loeMatkadeAndmed()
@@ -69,6 +69,17 @@ const tootleSonum = (req, res) => {
     res.render("pages/sonumid", {sonumid: sonumid})
 }
 
+async function looMatk(req, res){
+    const matk = {
+        nimetus: req.body.nimetus,
+        pildiUrl: "/assets/Hills.png",
+        kirjeldus: req.body.kirjeldus,
+        osalejad: []
+    }
+    await lisaMatkData(matk)
+    res.status(201).end()
+}
+
 module.exports = {
     naitaMatkad,
     naitaMatka,
@@ -76,5 +87,6 @@ module.exports = {
     naitaUudised,
     naitaUudis,
     naitaKontakt,
-    tootleSonum
+    tootleSonum,
+    looMatk
 }

@@ -28,3 +28,28 @@ Content-Type: application/json
 
 ### Kõigi uudiste lugemine
 GET http://localhost:3030/api/uudised HTTP/1.1
+
+
+### Matka lisamine
+POST http://localhost:3030/api/matk HTTP/1.1
+Content-Type: application/json
+
+{
+    "nimetus": "Matk Kuutsemäel",
+    "pildiUrl": "/assets/Hiker.png",
+    "kirjeldus": "10km kiiret jooksu.",
+    "osalejad": ["malle@mail.ee", "toomas@hot.ee"]
+}
+
+
+
+###
+
+POST http://localhost:3030/api/todo HTTP/1.1
+Content-Type: application/json
+
+{
+    "nimetus": "prea muna",
+    "prioriteet": 1,
+    "kasTehtud": true
+}
