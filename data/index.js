@@ -116,6 +116,9 @@ function loeUudisedAndmed(){
    return uudised
 }
 
+function lisaUudisData({pealkiri, uudisepiltUrl, kokkuvote }){
+   uudised.push({pealkiri, uudisepiltUrl, kokkuvote})
+}
 
 const sonumid = []
 
@@ -134,5 +137,6 @@ function loeSonumid(){
     lisaOsaleja,
     loeUudisedAndmed,
     lisaSonum,
-    loeSonumid
+    loeSonumid,
+    lisaUudisData
  }

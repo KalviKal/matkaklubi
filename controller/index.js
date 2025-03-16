@@ -1,5 +1,5 @@
 
-const {loeMatkadeAndmed, lisaOsaleja, loeUudisedAndmed, lisaSonum, loeSonumid, lisaMatkData} = require("../data")
+const {loeMatkadeAndmed, lisaOsaleja, loeUudisedAndmed, lisaSonum, loeSonumid, lisaMatkData, lisaUudisData} = require("../data")
 
 const naitaMatkad = (req, res) => {
     const matkad = loeMatkadeAndmed()
@@ -69,6 +69,21 @@ const tootleSonum = (req, res) => {
     res.render("pages/sonumid", {sonumid: sonumid})
 }
 
+const tootleUudis = (req, res) => {
+    console.log("Controller tootleUudis funktsioon")
+    console.log(req.body)
+    
+    lisaUudisData({pealkiri: req.body.pealkiri, uudisepiltUrl: req.body.uudisepiltUrl, kokkuvote:req.body.kokkuvote})
+    console.log(loeUudisedAndmed())
+    //res.send(
+    //    `
+    //    <h2>Sõnum on edukalt edastatud! </h2>
+    //    `
+    //)
+    
+    res.render("pages/admin")
+}
+
 async function looMatk(req, res){
     const matk = {
         nimetus: req.body.nimetus,
@@ -88,5 +103,6 @@ module.exports = {
     naitaUudis,
     naitaKontakt,
     tootleSonum,
-    looMatk
+    looMatk,
+    tootleUudis
 }

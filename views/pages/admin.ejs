@@ -19,6 +19,25 @@
         <div id="admin-sisu">
             siia tuleb admin sisu
         </div>
+        <div>
+            <h3>Uudiste publitseerimine</h3>
+            <form id="uudiseForm" method="post">
+                <div class="form-group">
+                    <label for="pealkiri">Pealkiri</label>
+                    <input placeholder="Uudised pealkiri ..." type="text" class="form-control" id="pealkiri" name="pealkiri">
+                </div>
+                <div class="form-group">
+                    <label for="uudisepiltUrl">Uudise pildi URL</label>
+                    <input placeholder="URL formaadis: /assets/hiking3.png" type="text" class="form-control" id="uudisepiltUrl" name="uudisepiltUrl">
+                </div>
+                <div class="form-group">
+                    <label for="kokkuvote">Kokkuvõte</label>
+                    <textarea placeholder="Uudise kokkuvõte" class="form-control" name="kokkuvote" id="kokkuvote" rows="10"></textarea>
+                </div>
+                <a href="#" onclick="lisaUudis()" class="btn btn-primary mt-2">Saada</a>
+                <input type="submit" class="btn btn-primary mt-2" value="Saada">
+            </form>
+        </div>
     </div>
 
 

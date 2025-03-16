@@ -13,6 +13,7 @@ async function loeSonumid() {
 
     const sonumid = await result.json()
     console.log(sonumid)
+    
 }
 
 
@@ -94,3 +95,70 @@ function naitaParemPaan(matkaId){
 
 
 loeMatkadJaKuvaLeht()
+
+
+
+
+async function lisaUudis_ei_ole_kasutuses() {
+    const uudiselisamine = await fetch('/api/uudised', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            pealkiri: "Test  Uudis",
+            uudisepiltUrl: "/assets/hiking3.png",
+            kokkuvote: "erejfef"
+        })
+    }
+
+    )
+    const responseData = await uudiselisamine;
+    console.log('Success:', responseData);
+    
+}
+
+// Get the form element
+const form = document.getElementById('uudiseForm');
+
+// Create a function to handle form submission
+async function lisaUudis(event) {
+    //event.preventDefault(); // Prevent the default form submission
+
+    // Create a FormData object from the form
+    const formData = new FormData(form);
+
+    // Convert FormData to a plain object
+    const formObject = {};
+    formData.forEach((value, key) => {
+        formObject[key] = value;
+    });
+
+    // Convert the plain object to a JSON string
+    const formJSON = JSON.stringify(formObject);
+
+    try {
+        // Send the POST request
+        const response = await fetch('/api/uudised', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: formJSON
+        });
+
+        // Handle the response
+        if (response.ok) {
+            const responseData = await response;
+            console.log('Success:', responseData);
+        } else {
+            console.error('Error:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// Add event listener to the form
+form.addEventListener('submit', lisaUudis);

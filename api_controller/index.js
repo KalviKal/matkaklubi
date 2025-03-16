@@ -1,4 +1,4 @@
-const { loeSonumid, lisaSonum:lisaSonumData, loeMatkadeAndmed, lisaMatkData, loeUudisedAndmed} = require('../data')
+const { loeSonumid, lisaSonum:lisaSonumData, loeMatkadeAndmed, lisaMatkData, loeUudisedAndmed, lisaUudisData} = require('../data')
 
 const tagastaSonumid = (req, res) => {
     const sonumid = loeSonumid()
@@ -35,11 +35,22 @@ const tagastaUudised = (req, res) => {
     res.json(uudised)
 }
 
+const lisaUudis = (req, res) => {
+    console.log(req.body)
+    lisaUudisData({
+        pealkiri: req.body.pealkiri, 
+        uudisepiltUrl: req.body.uudisepiltUrl, 
+        kokkuvote: req.body.kokkuvote
+    })
+    res.status(201).end()
+}
+
 
 module.exports = {
     tagastaSonumid,
     lisaSonum,
     tagastaMatkad,
     tagastaUudised,
-    lisaMatk
+    lisaMatk,
+    lisaUudis
 }
