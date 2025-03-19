@@ -4,7 +4,7 @@ const path = require("path")
 
 const {naitaMatkad, naitaMatka, registreeriOsaleja, naitaUudised, naitaUudis, naitaKontakt, tootleSonum, looMatk, tootleUudis } =require("./controller");
 const { tagastaSonumid, lisaSonum, tagastaMatkad, tagastaUudised, lisaMatk, lisaUudis, lisaOsalejaCtrl, eemaldaUudis } = require('./api_controller');
-
+const { loeMatkadeAndmed } = require('./data');
 
 const app = express();
 app.use(express.static("public"))
@@ -54,4 +54,7 @@ app.delete('/api/uudis/:id', eemaldaUudis)
 app.get('/admin', (req, res) => {res.render('pages/admin')})
 app.post('/admin', (req, res) => {res.render('pages/admin')})
 
-app.listen(PORT, () => console.log('Matkaklubi töötab pordil: ' + PORT))
+app.listen(PORT, () => {console.log('Matkaklubi töötab pordil: ' + PORT)
+    loeMatkadeAndmed()
+})
+
