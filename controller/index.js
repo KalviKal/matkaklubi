@@ -1,9 +1,9 @@
 
 const {loeMatkadeAndmed, lisaOsaleja, loeUudisedAndmed, lisaSonum, loeSonumid, lisaMatkData, lisaUudisData} = require("../data")
 
-const naitaMatkad = (req, res) => {
-    const matkad = loeMatkadeAndmed()
-    console.log(matkad)
+const naitaMatkad =  async (req, res) => {
+    const matkad = await loeMatkadeAndmed()
+    //console.log(matkad)
     res.render("pages/index", {matkad: matkad})
 }
 
@@ -26,8 +26,8 @@ const naitaMatkad = (req, res) => {
         `)
 } */
 
-const naitaMatka = (req, res) => {
-    const matkad = loeMatkadeAndmed()
+const naitaMatka =  async (req, res) => {
+    const matkad =  await loeMatkadeAndmed()
     const matkaIndeks = req.params.id
     const matk = matkad[matkaIndeks]
     res.render("pages/matk", {matk: matk})
@@ -38,8 +38,8 @@ const naitaKontakt = (req, res) => {
 }
 
 
-const registreeriOsaleja = (req, res) => {
-    lisaOsaleja(req.query.matk, req.query.email)
+const registreeriOsaleja = async (req, res) => {
+    await lisaOsaleja(req.query.matk, req.query.email)
     res.redirect("/matkad")
 }
 

@@ -3,7 +3,7 @@ const express = require('express')
 const path = require("path")
 
 const {naitaMatkad, naitaMatka, registreeriOsaleja, naitaUudised, naitaUudis, naitaKontakt, tootleSonum, looMatk, tootleUudis } =require("./controller");
-const { tagastaSonumid, lisaSonum, tagastaMatkad, tagastaUudised, lisaMatk, lisaUudis } = require('./api_controller');
+const { tagastaSonumid, lisaSonum, tagastaMatkad, tagastaUudised, lisaMatk, lisaUudis, lisaOsalejaCtrl } = require('./api_controller');
 
 
 const app = express();
@@ -44,6 +44,8 @@ app.post('/api/uudised', lisaUudis)
 
 
 app.post('/api/matk', looMatk)
+
+app.patch('/api/matk/:id/osaleja', lisaOsalejaCtrl)
 
 
 // Admin

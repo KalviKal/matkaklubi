@@ -26,20 +26,26 @@ const matk1 = {
  }
  
  
- const matkad = [
-    matk1,
-    matk2,
-    {
-        nimetus: "Mägimatk Otepääl",
-        pildiUrl: "/assets/Hills.png",
-        kirjeldus: "Lähme ja oleme kolm päeva mägedes",
-        osalejad: ["uudo@ryhkija.ee"]
-    }
- ]
+ let matkad = null
  
 
- function loeMatkadeAndmed(){
-    return matkad
+ async function loeMatkadeAndmed(){
+   if (matkad !== null) {
+      return matkad
+   }
+   try {
+      await client.connect();
+      const database = client.db(andmebaas);
+      const matkadCollection = database.collection("matkad");
+      matkad = await matkadCollection.find({}).toArray()
+      //console.log(matkad)
+      return matkad
+    } catch(error) {
+      console.log(error.message)
+      return []
+    } finally {
+      await client.close();
+    }
  }
 
  function lisaMatkData({nimetus, pildiUrl, kirjeldus, osalejad}){
@@ -48,7 +54,7 @@ const matk1 = {
 
 // MongoDB jaoks
 async function lisaMatkData(matk){
-
+   matkad.push(matk)
    try {
       await client.connect();
       const database = client.db(andmebaas);
@@ -62,7 +68,8 @@ async function lisaMatkData(matk){
 }
 
 
- function lisaOsaleja(matkaIndeks, osalejaEmail){
+ async function lisaOsaleja(matkaIndeks, osalejaEmail){
+      await loeMatkadeAndmed()
     const matk = matkad[matkaIndeks]
     if (!matk) {
         throw Error("Otsitavat matka ei ole!")
@@ -72,10 +79,26 @@ async function lisaMatkData(matk){
     }
 
     if (matk.osalejad.findIndex( el => el === osalejaEmail) !== -1) {
-        throw Error("Osaleja on juba regisreerunud")
+        throw Error("Osaleja on juba registreerunud")
     }
 
     matk.osalejad.push(osalejaEmail)
+    try {
+      await client.connect();
+      const database = client.db(andmebaas);
+      const matkad = database.collection("matkad");
+      const result = await matkad.updateOne(
+         {_id: matk._id},
+         {
+            $set: {osalejad: matk.osalejad}
+         }
+      )
+      return true
+    } finally {
+      await client.close();
+    }
+
+
  }
 
 
@@ -139,4 +162,5 @@ function loeSonumid(){
     lisaSonum,
     loeSonumid,
     lisaUudisData
+    
  }

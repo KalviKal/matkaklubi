@@ -42,14 +42,14 @@ Content-Type: application/json
 }
 
 
-
-###
-
-POST http://localhost:3030/api/todo HTTP/1.1
+### Osaleja lisamine matkale
+PATCH http://localhost:3030/api/matk/1/osaleja
 Content-Type: application/json
 
 {
-    "nimetus": "prea muna",
-    "prioriteet": 1,
-    "kasTehtud": true
+    "email": "uus.matkaja@test.ee"
 }
+
+### Osaleja eemaldamine matkalt
+DELETE http://localhost:3030/api/matk/1/osaleja/2
+
