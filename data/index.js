@@ -143,6 +143,21 @@ function lisaUudisData({pealkiri, uudisepiltUrl, kokkuvote }){
    uudised.push({pealkiri, uudisepiltUrl, kokkuvote})
 }
 
+
+function eemaldaUudisData(uudiseIndeks){
+   const uudised = loeUudisedAndmed()
+   const uudis = uudised[uudiseIndeks]
+   if (!uudis) {
+      throw Error("Otsitavat matka ei ole!")
+   }
+   console.log(uudised.length)
+   uudised.splice(uudiseIndeks, 1)
+   console.log(uudised.length)
+
+}
+
+
+
 const sonumid = []
 
 
@@ -161,6 +176,7 @@ function loeSonumid(){
     loeUudisedAndmed,
     lisaSonum,
     loeSonumid,
-    lisaUudisData
+    lisaUudisData,
+    eemaldaUudisData
     
  }

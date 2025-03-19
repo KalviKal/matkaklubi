@@ -29,6 +29,9 @@ Content-Type: application/json
 ### Kõigi uudiste lugemine
 GET http://localhost:3030/api/uudised HTTP/1.1
 
+### Uudiste eemaldamine
+DELETE http://localhost:3030/api/uudis/2 HTTP/1.1
+
 
 ### Matka lisamine
 POST http://localhost:3030/api/matk HTTP/1.1

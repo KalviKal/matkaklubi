@@ -5,7 +5,9 @@ const {
     lisaMatkData, 
     loeUudisedAndmed, 
     lisaUudisData, 
-    lisaOsaleja} = require('../data')
+    lisaOsaleja,
+    eemaldaUudisData
+    } = require('../data')
 
 const tagastaSonumid = (req, res) => {
     const sonumid = loeSonumid()
@@ -69,6 +71,17 @@ async function lisaOsalejaCtrl(req, res) {
     }
 }
 
+const eemaldaUudis = (req, res) => {
+    if (!req.params.id){
+        res.status(403).end({error: "uudise id'd ei leitud"})
+    }
+    console.log(req.body)
+    eemaldaUudisData(req.params.id)
+    res.status(200).end()
+}
+
+
+
 module.exports = {
     tagastaSonumid,
     lisaSonum,
@@ -76,5 +89,6 @@ module.exports = {
     tagastaUudised,
     lisaMatk,
     lisaUudis,
-    lisaOsalejaCtrl
+    lisaOsalejaCtrl,
+    eemaldaUudis
 }

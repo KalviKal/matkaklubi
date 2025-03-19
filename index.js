@@ -3,7 +3,7 @@ const express = require('express')
 const path = require("path")
 
 const {naitaMatkad, naitaMatka, registreeriOsaleja, naitaUudised, naitaUudis, naitaKontakt, tootleSonum, looMatk, tootleUudis } =require("./controller");
-const { tagastaSonumid, lisaSonum, tagastaMatkad, tagastaUudised, lisaMatk, lisaUudis, lisaOsalejaCtrl } = require('./api_controller');
+const { tagastaSonumid, lisaSonum, tagastaMatkad, tagastaUudised, lisaMatk, lisaUudis, lisaOsalejaCtrl, eemaldaUudis } = require('./api_controller');
 
 
 const app = express();
@@ -47,10 +47,11 @@ app.post('/api/matk', looMatk)
 
 app.patch('/api/matk/:id/osaleja', lisaOsalejaCtrl)
 
+app.delete('/api/uudis/:id', eemaldaUudis)
+
 
 // Admin
 app.get('/admin', (req, res) => {res.render('pages/admin')})
-
-app.post('/admin', tootleUudis)
+app.post('/admin', (req, res) => {res.render('pages/admin')})
 
 app.listen(PORT, () => console.log('Matkaklubi töötab pordil: ' + PORT))

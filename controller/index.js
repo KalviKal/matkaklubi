@@ -69,20 +69,7 @@ const tootleSonum = (req, res) => {
     res.render("pages/sonumid", {sonumid: sonumid})
 }
 
-const tootleUudis = (req, res) => {
-    console.log("Controller tootleUudis funktsioon")
-    console.log(req.body)
-    
-    lisaUudisData({pealkiri: req.body.pealkiri, uudisepiltUrl: req.body.uudisepiltUrl, kokkuvote:req.body.kokkuvote})
-    console.log(loeUudisedAndmed())
-    //res.send(
-    //    `
-    //    <h2>Sõnum on edukalt edastatud! </h2>
-    //    `
-    //)
-    
-    res.render("pages/admin")
-}
+
 
 async function looMatk(req, res){
     const matk = {
@@ -103,6 +90,6 @@ module.exports = {
     naitaUudis,
     naitaKontakt,
     tootleSonum,
-    looMatk,
-    tootleUudis
+    looMatk
+    
 }
