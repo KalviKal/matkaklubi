@@ -2,8 +2,8 @@ const express = require('express')
 
 const path = require("path")
 
-const {naitaMatkad, naitaMatka, registreeriOsaleja, naitaUudised, naitaUudis, naitaKontakt, tootleSonum, looMatk, tootleUudis } =require("./controller");
-const { tagastaSonumid, lisaSonum, tagastaMatkad, tagastaUudised, lisaMatk, lisaUudis, lisaOsalejaCtrl, eemaldaUudis } = require('./api_controller');
+const {naitaMatkad, naitaMatka, registreeriOsaleja, naitaUudised, naitaUudis, naitaKontakt, tootleSonum, looMatk } =require("./controller");
+const { tagastaSonumid, lisaSonum, tagastaMatkad, tagastaUudised, lisaMatk, lisaUudis, lisaOsalejaCtrl, eemaldaUudis, kustutaOsalejaCtrl } = require('./api_controller');
 const { loeMatkadeAndmed } = require('./data');
 
 const app = express();
@@ -45,7 +45,8 @@ app.post('/api/uudised', lisaUudis)
 
 app.post('/api/matk', looMatk)
 
-app.patch('/api/matk/:id/osaleja', lisaOsalejaCtrl)
+app.post('/api/matk/:id/osaleja', lisaOsalejaCtrl)
+app.delete('/api/matk/:id/osaleja/:osalejaId', kustutaOsalejaCtrl)
 
 app.delete('/api/uudis/:id', eemaldaUudis)
 

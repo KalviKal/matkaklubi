@@ -30,7 +30,7 @@ const naitaMatka =  async (req, res) => {
     const matkad =  await loeMatkadeAndmed()
     const matkaIndeks = req.params.id
     const matk = matkad[matkaIndeks]
-    res.render("pages/matk", {matk: matk})
+    res.render("pages/matk", {matk: matk, matkaIndeks: matkaIndeks})
 }
 
 const naitaKontakt = (req, res) => {
@@ -42,6 +42,10 @@ const registreeriOsaleja = async (req, res) => {
     await lisaOsaleja(req.query.matk, req.query.email)
     res.redirect("/matkad")
 }
+
+
+
+
 
 const naitaUudised = (req, res) => {
     const uudised = loeUudisedAndmed()

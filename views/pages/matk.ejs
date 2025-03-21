@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="/matkad.js"></script>
 </head>
 <body>
     <div class="header-container">
@@ -27,10 +28,24 @@
                     </div>
                
             </div>
+            <h4>Registreeri ennast matkale</h4>
+            <form method="post">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input placeholder="sinu e-mail ..." type="text" class="form-control" id="osalejaEmail" name="email">
+                </div>               
+                <button id="registreeriBtn" class="btn btn-primary">Registreeru</button>
+            </form>
  
         </div>
     </div>
 
+<script>
+    document.getElementById('registreeriBtn').onclick = function(event){
+        event.preventDefault();
+        registreeriMatkale(<%=matkaIndeks%>)
+    }
+</script>
     
 </body>
 </html>

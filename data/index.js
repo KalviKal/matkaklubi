@@ -67,6 +67,23 @@ async function lisaMatkData(matk){
    
 }
 
+async function _muudaMatkaOsalejaid(matk) {
+   try {
+      await client.connect();
+      const database = client.db(andmebaas);
+      const matkad = database.collection("matkad");
+      const result = await matkad.updateOne(
+         {_id: matk._id},
+         {
+            $set: {osalejad: matk.osalejad}
+         }
+      )
+      return true
+    } finally {
+      await client.close();
+    }
+   
+ }
 
  async function lisaOsaleja(matkaIndeks, osalejaEmail){
       await loeMatkadeAndmed()
@@ -83,22 +100,30 @@ async function lisaMatkData(matk){
     }
 
     matk.osalejad.push(osalejaEmail)
-    try {
-      await client.connect();
-      const database = client.db(andmebaas);
-      const matkad = database.collection("matkad");
-      const result = await matkad.updateOne(
-         {_id: matk._id},
-         {
-            $set: {osalejad: matk.osalejad}
-         }
-      )
-      return true
-    } finally {
-      await client.close();
-    }
+    _muudaMatkaOsalejaid(matk)
 
 
+ }
+
+
+ 
+
+ async function eemaldaOsaleja(matkaId, osalejaId) {
+   if (typeof matkad[matkaId] === 'undefined'){
+      throw Error("Otsitavat matka ei ole")
+   }
+   
+   const matk = matkad[matkaId]
+   let osalejad = matk.osalejad
+
+   delete osalejad[osalejaId]
+   // filtereerisime empty elemendi
+   osalejad = osalejad.filter(el => el)
+
+   matk.osalejad = osalejad
+   await _muudaMatkaOsalejaid(matk)
+   return true
+    
  }
 
 
@@ -177,6 +202,7 @@ function loeSonumid(){
     lisaSonum,
     loeSonumid,
     lisaUudisData,
-    eemaldaUudisData
+    eemaldaUudisData,
+    eemaldaOsaleja
     
  }
