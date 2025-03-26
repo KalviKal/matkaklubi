@@ -48,9 +48,9 @@ const matk1 = {
     }
  }
 
- function lisaMatkData({nimetus, pildiUrl, kirjeldus, osalejad}){
-   matkad.push({nimetus, pildiUrl, kirjeldus, osalejad})
- }
+ //function lisaMatkData({nimetus, pildiUrl, kirjeldus, osalejad}){
+ //  matkad.push({nimetus, pildiUrl, kirjeldus, osalejad})
+ //}
 
 // MongoDB jaoks
 async function lisaMatkData(matk){
