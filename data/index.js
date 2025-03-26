@@ -1,7 +1,7 @@
 // MongoDB
 const {MongoClient} = require("mongodb")
 const andmebaas = "matka-app-2111"
-const salasona = "zmar6.6RGDNgx"
+const salasona = process.env.MONGODB_PASSWORD
 //const mongoUrl = `mongodb+srv://matka-app:${salasona}@cluster0.vpkdv.mongodb.net/${andmebaas}?retryWrites=true&w=majority`
 const mongoUrl = `mongodb+srv://matkaapp:${salasona}@cluster0.7caxa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 const client = new MongoClient(mongoUrl);

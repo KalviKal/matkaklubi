@@ -1,6 +1,12 @@
 const express = require('express')
 
+// dotenv kasutamiseks import
+require('dotenv').config()
+
+
 const path = require("path")
+
+
 
 const {naitaMatkad, naitaMatka, registreeriOsaleja, naitaUudised, naitaUudis, naitaKontakt, tootleSonum, looMatk } =require("./controller");
 const { tagastaSonumid, lisaSonum, tagastaMatkad, tagastaUudised, lisaMatk, lisaUudis, lisaOsalejaCtrl, eemaldaUudis, kustutaOsalejaCtrl } = require('./api_controller');
